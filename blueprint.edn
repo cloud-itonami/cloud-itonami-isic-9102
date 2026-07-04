@@ -1,4 +1,4 @@
-{:itonami.blueprint/id "cloud-itonami-9102"
+{:itonami.blueprint/id "cloud-itonami-isic-9102"
  :itonami.blueprint/name "Museums activities and operation of historical sites and bu..."
  :itonami.blueprint/isic-rev5 "9102"
  :itonami.blueprint/domain :recreation/museums

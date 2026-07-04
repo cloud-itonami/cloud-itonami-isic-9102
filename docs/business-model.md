@@ -2,7 +2,7 @@
 
 ## Classification
 
-- Repository: `cloud-itonami-9102`
+- Repository: `cloud-itonami-isic-9102`
 - ISIC Rev.5: `9102`
 - Activity: museum activities and operation of historical sites and buildings -- collection curation, exhibition and public access to cultural heritage
 - Social impact: cultural/recreational access, data sovereignty, transparent audit

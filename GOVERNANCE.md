@@ -1,6 +1,6 @@
 # Governance
 
-`cloud-itonami-9102` is an OSS open-business blueprint for museum activities and operation of historical sites and buildings -- collection curation, exhibition and public access to cultural heritage.
+`cloud-itonami-isic-9102` is an OSS open-business blueprint for museum activities and operation of historical sites and buildings -- collection curation, exhibition and public access to cultural heritage.
 Governance covers both the capability layer and the operator model.
 
 ## Maintainers
