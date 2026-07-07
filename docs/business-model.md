@@ -30,8 +30,15 @@
 
 ## Trust Controls
 
-- no item is loaned out or deaccessioned without human sign-off
-- a fabricated provenance record forces a hold, not an override
-- every collection-movement path is auditable
+- no item is loaned out or deaccessioned without human sign-off (a
+  curator/collections committee)
+- a fabricated jurisdiction citation, incomplete item evidence, a
+  provenance gap beyond the due-diligence ceiling, or an unresolved
+  incident (theft/damage) flag -- each forces a hold, not an override
+- an item's loan/deaccession cannot each be finalized twice: a
+  double-loan or double-deaccession attempt is held off this actor's
+  own item facts alone, with no upstream comparison needed
+- every intake, assessment, screening and loan/deaccession path is
+  auditable
 - donor/lender personal data stays outside Git
 - emergency manual override paths remain outside LLM control
