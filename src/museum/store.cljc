@@ -38,10 +38,9 @@
   a lender/donor/regulator trusting an institution needs, and the
   evidence an operator needs if a loan or deaccession is later
   disputed."
-  (:require #?(:clj  [clojure.edn :as edn]
-               :cljs [cljs.reader :as edn])
-            [museum.registry :as registry]
-            [langchain.db :as d]))
+  (:require [museum.registry :as registry]
+            [langchain.db :as d]
+            [langchain-store.core :as ls]))
 
 (defprotocol Store
   (item [s id])
@@ -187,8 +186,10 @@
    :loan-sequence/jurisdiction          {:db/unique :db.unique/identity}
    :deaccession-sequence/jurisdiction   {:db/unique :db.unique/identity}})
 
-(defn- enc [v] (pr-str v))
-(defn- dec* [s] (when s (edn/read-string s)))
+;; EDN-blob codec: kotoba-lang/langchain-store's shared machinery
+;; (ADR-2607141600) instead of a hand-rolled two-liner.
+(defn- enc [v] (ls/enc v))
+(defn- dec* [s] (ls/dec* s))
 
 (defn- item->tx [{:keys [id item-name provenance-gap-years incident-flag-resolved?
                          loan-finalized? deaccessioned?
