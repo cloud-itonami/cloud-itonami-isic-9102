@@ -164,7 +164,16 @@
   [{:keys [op subject]} st]
   (when (contains? #{:item/loan :item/deaccession} op)
     (let [it (store/item st subject)]
-      (when (registry/provenance-gap-exceeds-threshold? it)
+      (cond
+        ;; The entity EXISTS but the figure it needs is missing or
+        ;; non-numeric, so the limit cannot be evaluated -- which is not
+        ;; the same as being within it. A missing entity is a different
+        ;; violation that another gate owns, so it is excluded here.
+        (and it (not (registry/provenance-gap-exceeds-threshold-checkable? it)))
+        [{:rule :provenance-gap-exceeds-threshold
+          :detail "上限判定に必要な値が記録されていない -- 限度内と断定できないため進めない"}]
+
+        (registry/provenance-gap-exceeds-threshold? it)
         [{:rule :provenance-gap-exceeds-threshold
           :detail (str subject " の来歴に" (:provenance-gap-years it)
                       "年の未確認期間があり、上限(" registry/max-provenance-gap-years

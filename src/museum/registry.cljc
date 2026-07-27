@@ -65,6 +65,16 @@
   (and (number? provenance-gap-years)
        (> provenance-gap-years max-provenance-gap-years)))
 
+(defn provenance-gap-exceeds-threshold-checkable?
+  "Are the figures `provenance-gap-exceeds-threshold?` needs actually recorded?
+
+  That predicate answers only `over` / `not over`, and its
+  `(and (number? ...) ...)` guard made an un-recorded figure fall
+  through as `not over`. A work with no recorded provenance gap read as having an acceptable one. Callers must ask this first:
+  un-checkable is not within limits."
+  [{:keys [provenance-gap-years]}]
+  (boolean (and (number? provenance-gap-years))))
+
 (defn register-item-loan
   "Validate + construct the ITEM-LOAN registration DRAFT -- the
   institution's own legal act of loaning out a real collection item.
