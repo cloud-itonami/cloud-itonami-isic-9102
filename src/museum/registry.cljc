@@ -30,7 +30,7 @@
   deaccessioning the item itself (that is `museum.operation`'s
   `:item/loan`/`:item/deaccession`, always human-gated -- see README
   `Actuation`)."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- unsigned-certificate
   "Every certificate this actor produces is UNSIGNED -- signature is the
@@ -90,7 +90,7 @@
     (throw (ex-info "item-loan: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "item-loan: sequence must be >= 0" {})))
-  (let [loan-number (str (str/upper-case jurisdiction) "-LON-" (zero-pad sequence 6))
+  (let [loan-number (str (str/upper jurisdiction) "-LON-" (zero-pad sequence 6))
         record {"record_id" loan-number
                 "kind" "item-loan-draft"
                 "item_id" item-id
@@ -115,7 +115,7 @@
     (throw (ex-info "item-deaccession: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "item-deaccession: sequence must be >= 0" {})))
-  (let [deaccession-number (str (str/upper-case jurisdiction) "-DAC-" (zero-pad sequence 6))
+  (let [deaccession-number (str (str/upper jurisdiction) "-DAC-" (zero-pad sequence 6))
         record {"record_id" deaccession-number
                 "kind" "item-deaccession-draft"
                 "item_id" item-id
