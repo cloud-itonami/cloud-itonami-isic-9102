@@ -9,7 +9,7 @@
   `museum.governor`'s real rules). No invented numbers, no timestamps,
   byte-identical across reruns against the same seed."
   (:require [jp-go-dds.skin]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [museum.store :as store]
             [museum.operation :as op]
             [museum.governor :as governor]
