@@ -166,14 +166,14 @@ bespoke domain capability lib to reference at all.
 
 | File | Role |
 |---|---|
-| `src/museum/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + separate item-loan/item-deaccession history. No dynamically-filed sub-record -- both actuation ops act directly on a pre-seeded item, and the double-loan/double-deaccession guards check dedicated `:loan-finalized?`/`:deaccessioned?` booleans rather than a `:status` value |
-| `src/museum/registry.cljc` | Item-loan + item-deaccession draft records, plus `provenance-gap-exceeds-threshold?`/`max-provenance-gap-years` -- the SECOND check in this fleet's temporal-sufficiency family to enforce a MAXIMUM ceiling (established by `eldercare.registry/care-plan-review-overdue?`), and the first to apply it to a documented-history GAP rather than an elapsed-time-since-event figure |
-| `src/museum/facts.cljc` | Per-jurisdiction museum/cultural-property catalog with an official spec-basis citation per entry, honest coverage reporting |
-| `src/museum/curatoropsllm.cljc` | **CuratorOps-LLM Advisor** -- `mock-advisor` ‖ `llm-advisor`; intake/assessment/incident-screening/item-loan/item-deaccession proposals |
-| `src/museum/governor.cljc` | **Collections Governor** -- 4 HARD checks (spec-basis · evidence-incomplete · provenance-gap-exceeds-threshold, pure ground-truth MAXIMUM-ceiling recompute · incident-flag-unresolved, unconditional evaluation, the ELEVENTH grounding of this discipline) + already-loaned/already-deaccessioned guards + 1 soft (confidence/actuation gate) |
-| `src/museum/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted assess → supervised (both loan and deaccession always human; item intake is the ONLY auto-eligible op, no direct capital risk) |
-| `src/museum/operation.cljc` | **OperationActor** -- langgraph-clj StateGraph |
-| `src/museum/sim.cljc` | demo driver |
+| `src/museum/store.kotoba` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + separate item-loan/item-deaccession history. No dynamically-filed sub-record -- both actuation ops act directly on a pre-seeded item, and the double-loan/double-deaccession guards check dedicated `:loan-finalized?`/`:deaccessioned?` booleans rather than a `:status` value |
+| `src/museum/registry.kotoba` | Item-loan + item-deaccession draft records, plus `provenance-gap-exceeds-threshold?`/`max-provenance-gap-years` -- the SECOND check in this fleet's temporal-sufficiency family to enforce a MAXIMUM ceiling (established by `eldercare.registry/care-plan-review-overdue?`), and the first to apply it to a documented-history GAP rather than an elapsed-time-since-event figure |
+| `src/museum/facts.kotoba` | Per-jurisdiction museum/cultural-property catalog with an official spec-basis citation per entry, honest coverage reporting |
+| `src/museum/curatoropsllm.kotoba` | **CuratorOps-LLM Advisor** -- `mock-advisor` ‖ `llm-advisor`; intake/assessment/incident-screening/item-loan/item-deaccession proposals |
+| `src/museum/governor.kotoba` | **Collections Governor** -- 4 HARD checks (spec-basis · evidence-incomplete · provenance-gap-exceeds-threshold, pure ground-truth MAXIMUM-ceiling recompute · incident-flag-unresolved, unconditional evaluation, the ELEVENTH grounding of this discipline) + already-loaned/already-deaccessioned guards + 1 soft (confidence/actuation gate) |
+| `src/museum/phase.kotoba` | **Phase 0→3** -- read-only → assisted intake → assisted assess → supervised (both loan and deaccession always human; item intake is the ONLY auto-eligible op, no direct capital risk) |
+| `src/museum/operation.kotoba` | **OperationActor** -- langgraph-clj StateGraph |
+| `src/museum/sim.kotoba` | demo driver |
 | `test/museum/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)
