@@ -146,7 +146,7 @@ explicit statement.
   sufficiency family from "elapsed time since a recurring event" to
   "size of a gap in a historical record chain."
 - (+) The actuation invariant (governor + phase, two layers) is
-  regression-tested by `test/museum/phase_test.clj`'s `item-loan-
+  regression-tested by `test/museum/phase_test.kotoba`'s `item-loan-
   never-auto-at-any-phase`/`item-deaccession-never-auto-at-any-phase`.
 - (+) `MemStore` ‖ `DatomicStore` parity is proven by `test/museum/
   store_contract_test.clj`, the same `:db-api`-driven swap pattern
