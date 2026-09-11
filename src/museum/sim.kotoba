@@ -1,5 +1,5 @@
 (ns museum.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean item through
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean item through
   intake -> jurisdiction assessment -> incident screening -> item-loan
   proposal (always escalates) -> human approval -> commit, then through
   item-deaccession proposal (always escalates) -> human approval ->
